@@ -1,15 +1,13 @@
-# i3 config file (v4)
+# i3 config file
 
 set $mod Mod4
 
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango:FontAwesome 10
-# font pango:Terminus 12
 
 floating_modifier $mod
 
 bindsym $mod+Return exec sakura
-#i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -95,24 +93,16 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -166,7 +156,7 @@ bindsym --release Control+Insert exec --no-startup-id scrot '%Y-%m-%d_%H:%M_$wx$
 bindsym --release Print exec --no-startup-id scrot '%Y-%m-%d_%H:%M_$wx$h.png' -e 'mv $f ~/Screenshots'
 
 # class                 border  backgr.   text    indicator child_border
-client.focused          #000000 #ffffff   #000000 #ff0000   #FFA240
+client.focused          #000000 #ffffff   #000000 #FFA240   #FFA240
 #client.focused_inactive #ff0000 #5f676a   #ffffff #484e50   #5555ff
 client.unfocused        #000000 #000000   #ffffff #00ff00   #ffffff
 client.urgent           #2f343a #aaaaaa   #ffffff #900000   #900000
@@ -174,26 +164,13 @@ client.background       #ffffff
 
 # Windows borders
 gaps outer 0
-gaps inner 20
-gaps horizontal 5
-gaps vertical 15
-#
-
-for_window [class=".*"] border pixel 0
-
-# gaps inner all set 20
-# gaps outer current plus 10
-# gaps horizontal current plus 40
-# gaps outer current toggle 60
-# smart_gaps on
-# smart_borders no_gaps
-#smart_gaps inverse_outer
+gaps inner 10
+gaps top 28
 
 # Execute apps
 bindsym $mod+control+shift+l exec i3lock -i /home/hello/Pictures/dm2otL.png
 bindsym $mod+shift+i exec /home/hello/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/183.5429.30/bin/idea.sh
 bindsym $mod+shift+o exec /opt/WebStorm-183.5429.34/bin/webstorm.sh
-# bindsym $mod+shift+n exec nm-connection-editor
 bindsym $mod+shift+g exec yandex-browser-beta
 bindsym $mod+shift+w exec ~/.config/i3/wallpaper.sh
 bindsym $mod+shift+p exec ~/.config/i3/polybar.sh
@@ -204,27 +181,23 @@ bindsym $mod+shift+y exec yandex-disk start --dir=~/Photo/yandex
 bindsym $mod+shift+n exec nautilus
 
 # Windows setting
-assign [class="Telegram"] 4
-assign [class="GitKraken"] 5
-assign [class="Webstorm"] 2
-assign [class="Subl"] 3
-assign [class="Code"] 2
-assign [class="Google-chrome"] 5
 assign [class="Yandex-browser-beta"] 1
+assign [class="Webstorm"] 2
+assign [class="Phpstorm"] 2
+assign [class="Code"] 2
+assign [class="Subl"] 3
+assign [class="Telegram"] 4
+assign [class="Ramme"] 4
+assign [class="GitKraken"] 5
+assign [class="Google-chrome"] 5
 assign [class="Transmission"] 6
 assign [class="Steam"] 8
 
 for_window [class="(?i)gnome-calculator"] floating enable
 for_window [class="Google-chrome"] border none
-# for_window [class="Yandex-browser-beta"] floating enable
 
 # Execute apps
-# exec compton -D 10 -f --vsync drm
-# exec nitrogen --restore
-# exec feh  --bg-scale ~/Pictures/
-# exec --no-startup-id xautolock -time 1 -locker 'i3lock -i /home/hello/Pictures/dm2otL.png'
 exec ~/.config/i3/wallpaper.sh
-# exec feh --bg-fill ~/Pictures/asuka.png
 exec ~/.config/i3/tap-to-click.sh
 exec ~/.config/i3/polybar.sh
 exec telegram-desktop
